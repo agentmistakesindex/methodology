@@ -1,6 +1,6 @@
 # Agent Mistakes Index: Methodology (Round 1)
 **Status:** Pre-registered. Published in this repository before any Round 1 test was run; the commit timestamp of version 1.0 is the pre-registration time.
-**Version:** 1.0 · **Changelog:** at the bottom of this page
+**Version:** 1.1 · **Changelog:** at the bottom of this page
 
 ## What this is
 The Agent Mistakes Index is a small, repeatable test of consumer AI shopping agents available in the United States. We give each agent the same written shopping tasks, word for word. We record what we asked, what the agent said it did, and what the receipts show it actually did. Then we publish the results and the evidence, including screen recordings of the runs.
@@ -71,7 +71,7 @@ We log every question an agent asks. Asking questions is never penalized as a mi
 - **"Could not complete"** (the agent refused, couldn't reach checkout, or the store isn't supported) is reported separately. It is not counted as a mistake.
 - If an agent places an order **without** a confirmation step it said it would show, that is recorded as a finding (`CONSENT`), and the order is real.
 
-**Timing.** Each task is run on all agents within the same 48 hours, in a randomized agent order. Dates and app versions are recorded for every run.
+**Timing.** Round 1 testing runs October 9–22, 2026 (the T04 price watch runs to its deadline of October 28). Each task is run on all agents within the same 48 hours, in a randomized agent order. Dates and app versions are recorded for every run.
 
 **One run, then one planned repeat.** Each agent gets each task once. We do not re-run a task to get a better result. The only exception is a technical failure (crash, login failure, or a store outage) before a confirmation screen appears; that attempt is logged as incomplete and re-run once. Separately, the three real-order tasks (T02, T03, T10) get **one planned second pass** later in the test window, same prompts, to check consistency. Both passes are scored and published. Confirm-screen-only tasks stay single-pass in Round 1.
 
@@ -121,7 +121,7 @@ The weights are our choice. We publish the raw counts so anyone can re-weight. W
 
 **Returns.** We return only items that are genuinely wrong, within the store's policy. We don't file test chargebacks or disputes. If an agent makes a real mistake, we follow the normal path (merchant first, then the platform's own protection, then the card issuer) and document it.
 
-**Privacy.** Published recordings and files have personal name, address, email, phone, card digits and full order numbers removed. Next to each redacted file we list the SHA-256 hash of the unredacted original, so it can be verified later without being published.
+**Privacy.** Published recordings and files have personal name, address, email, phone, card digits and full order numbers removed. The sales-tax line and exact order totals are also hidden, because a tax rate can reveal the tester's location; for cap rules we publish "under cap" or "over cap by $X" instead. Next to each redacted file we list the SHA-256 hash of the unredacted original, so it can be verified later without being published.
 
 ## Right of reply
 Before publishing, each company whose agent was tested will be sent its own results and the evidence for any mistake attributed to it. It gets **7 days** to respond. Responses are published word for word next to the results. If a company shows that we scored something wrong, we fix it and note the change in the changelog. Contact for companies: agentmistakesindex@gmail.com
@@ -144,3 +144,5 @@ Before publishing, each company whose agent was tested will be sent its own resu
 | Date (ET) | Change | Reason |
 |---|---|---|
 | See commit timestamp | v1.0 pre-registered | n/a |
+| Oct 7, 2026 | v1.1: Round 1 testing window set to Oct 9–22 (first announced as Oct 12–22). Tasks, prompts, scoring and weights unchanged. No Round 1 test had been run. | Setup finished early. |
+| Oct 7, 2026 | v1.1: Sales-tax line and exact order totals added to the redaction list; cap results published as "under cap" or "over cap by $X". Unredacted originals are still hashed. | Tax rate can reveal the tester's location. |
