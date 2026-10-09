@@ -1,6 +1,6 @@
 # Agent Mistakes Index: Methodology (Round 1)
 **Status:** Pre-registered. Published in this repository before any Round 1 test was run; the commit timestamp of version 1.0 is the pre-registration time.
-**Version:** 1.1 · **Changelog:** at the bottom of this page
+**Version:** 1.2 · **Changelog:** at the bottom of this page
 
 ## What this is
 The Agent Mistakes Index is a small, repeatable test of consumer AI shopping agents available in the United States. We give each agent the same written shopping tasks, word for word. We record what we asked, what the agent said it did, and what the receipts show it actually did. Then we publish the results and the evidence, including screen recordings of the runs.
@@ -101,7 +101,7 @@ Each run is scored against the task's written hard rules, using the evidence onl
 
 The weights are our choice. We publish the raw counts so anyone can re-weight. With about eight tasks per agent, small differences don't mean much, so we won't name a "winner" unless the gap is large and consistent.
 
-**Second scorer.** A second person not involved in running the tests independently scores a random 30% of runs. Which runs are in that sample is decided **before** testing by a fixed random seed and a published script. Before Round 1 starts we publish a SHA-256 fingerprint of that seed on this page; after results are published we reveal the seed so anyone can check it matches the fingerprint and regenerates the same sample. They work from the evidence alone. We publish the agreement rate. When the two disagree, we write a rule that settles it, add it to this page, and apply it to all runs.
+**Second scorer.** A second person not involved in running the tests independently scores a random 30% of runs. Which runs are in that sample is decided **before** testing by a fixed random seed and a published script. Before Round 1 starts we publish a SHA-256 fingerprint of that seed on this page; after results are published we reveal the seed so anyone can check it matches the fingerprint and regenerates the same sample. The script is [`select_sample.py`](select_sample.py) in this repository, published before the first Round 1 run; the seed is not used to draw the sample until testing ends. They work from the evidence alone. We publish the agreement rate. When the two disagree, we write a rule that settles it, add it to this page, and apply it to all runs.
 
 **Seed fingerprint (pre-commitment):** `a7a94d19b5eff967112f8ad35cde13fc5a14dde6297a6af19dc463f4c7e8d94c` (SHA-256 of the seed; seed revealed with the results)
 
@@ -121,7 +121,7 @@ The weights are our choice. We publish the raw counts so anyone can re-weight. W
 
 **Returns.** We return only items that are genuinely wrong, within the store's policy. We don't file test chargebacks or disputes. If an agent makes a real mistake, we follow the normal path (merchant first, then the platform's own protection, then the card issuer) and document it.
 
-**Privacy.** Published recordings and files have personal name, address, email, phone, card digits and full order numbers removed. The sales-tax line and exact order totals are also hidden, because a tax rate can reveal the tester's location; for cap rules we publish "under cap" or "over cap by $X" instead. Next to each redacted file we list the SHA-256 hash of the unredacted original, so it can be verified later without being published.
+**Privacy.** Published recordings and files have personal name, address, email, phone, card digits and full order numbers removed. The sales-tax line and exact order totals are also hidden, because a tax rate can reveal the tester's location; for cap rules we publish "under cap" or "over cap by $X" instead, where X is the overage rounded up to the next whole dollar (for example, 40 cents over is published as "over cap by $1"). Next to each redacted file we list the SHA-256 hash of the unredacted original, so it can be verified later without being published.
 
 ## Right of reply
 Before publishing, each company whose agent was tested will be sent its own results and the evidence for any mistake attributed to it. It gets **7 days** to respond. Responses are published word for word next to the results. If a company shows that we scored something wrong, we fix it and note the change in the changelog. Contact for companies: agentmistakesindex@gmail.com
@@ -146,3 +146,5 @@ Before publishing, each company whose agent was tested will be sent its own resu
 | See commit timestamp | v1.0 pre-registered | n/a |
 | Oct 7, 2026 | v1.1: Round 1 testing window set to Oct 9–22 (first announced as Oct 12–22). Tasks, prompts, scoring and weights unchanged. No Round 1 test had been run. | Setup finished early. |
 | Oct 7, 2026 | v1.1: Sales-tax line and exact order totals added to the redaction list; cap results published as "under cap" or "over cap by $X". Unredacted originals are still hashed. | Tax rate can reveal the tester's location. |
+| Oct 9, 2026 | v1.2: Added the second-scorer selection script (select_sample.py) and a README. Tasks, prompts, scoring and weights unchanged. No Round 1 test had been run. | The selection rule should be public before testing, so anyone can reproduce the sample. |
+| Oct 9, 2026 | v1.2: Over-cap amounts rounded up to the next whole dollar ("over cap by $X", X a whole dollar). Scoring unchanged; only the published figure is rounded. No Round 1 test had been run. | An exact overage could reveal the tax rate, and with it the tester's location. |
