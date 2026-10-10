@@ -7,7 +7,7 @@ its SHA-256 fingerprint is in METHODOLOGY.md.
 Rule:
   1. Every run has an ID of the form  <task>-<agent>-p<pass>
      task  = t01 t02 t03 t04 t06 t07 t08 t10
-     agent = muse alexa google copilot perplexity chatgpt
+     agent = muse alexa google-gemini google-aimode copilot perplexity chatgpt
      pass  = 1, or 2 for the planned second pass
      e.g.  t10-copilot-p2
   2. Each run's rank = SHA-256( seed + "|" + run_id ), read as a hex number.
@@ -25,7 +25,7 @@ Usage (results day):
 import argparse, hashlib, math, re, sys
 
 FINGERPRINT = "a7a94d19b5eff967112f8ad35cde13fc5a14dde6297a6af19dc463f4c7e8d94c"
-ID_RE = re.compile(r"^t(01|02|03|04|06|07|08|10)-(muse|alexa|google|copilot|perplexity|chatgpt)-p[12]$")
+ID_RE = re.compile(r"^t(01|02|03|04|06|07|08|10)-(muse|alexa|google-gemini|google-aimode|copilot|perplexity|chatgpt)-p[12]$")
 
 def rank(seed: str, run_id: str) -> int:
     return int(hashlib.sha256(f"{seed}|{run_id}".encode("utf-8")).hexdigest(), 16)

@@ -1,6 +1,6 @@
 # Agent Mistakes Index: Methodology (Round 1)
 **Status:** Pre-registered. Published in this repository before any Round 1 test was run; the commit timestamp of version 1.0 is the pre-registration time.
-**Version:** 1.2 · **Changelog:** at the bottom of this page
+**Version:** 1.3 · **Changelog:** at the bottom of this page
 
 ## What this is
 The Agent Mistakes Index is a small, repeatable test of consumer AI shopping agents available in the United States. We give each agent the same written shopping tasks, word for word. We record what we asked, what the agent said it did, and what the receipts show it actually did. Then we publish the results and the evidence, including screen recordings of the runs.
@@ -148,3 +148,4 @@ Before publishing, each company whose agent was tested will be sent its own resu
 | Oct 7, 2026 | v1.1: Sales-tax line and exact order totals added to the redaction list; cap results published as "under cap" or "over cap by $X". Unredacted originals are still hashed. | Tax rate can reveal the tester's location. |
 | Oct 9, 2026 | v1.2: Added the second-scorer selection script (select_sample.py) and a README. Tasks, prompts, scoring and weights unchanged. No Round 1 test had been run. | The selection rule should be public before testing, so anyone can reproduce the sample. |
 | Oct 9, 2026 | v1.2: Over-cap amounts rounded up to the next whole dollar ("over cap by $X", X a whole dollar). Scoring unchanged; only the published figure is rounded. No Round 1 test had been run. | An exact overage could reveal the tax rate, and with it the tester's location. |
+| Oct 10, 2026 | v1.3: Google is tested and scored separately on both surfaces listed in the agent table, the Gemini app and AI Mode in Search, for every Round 1 task. Run IDs for Google become google-gemini and google-aimode, and select_sample.py accepts them; the seed is unchanged and the sample is still drawn only after testing ends. Tasks, prompts, scoring and weights unchanged. Made after T01 had been run on both surfaces; both T01 results ("could not complete") are published. | The agent table named both surfaces without saying which one counts. Testing both removes the choice. |
