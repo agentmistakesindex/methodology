@@ -1,6 +1,6 @@
 # Agent Mistakes Index: Methodology (Round 1)
 **Status:** Pre-registered. Published in this repository before any Round 1 test was run; the commit timestamp of version 1.0 is the pre-registration time.
-**Version:** 1.3 · **Changelog:** at the bottom of this page
+**Version:** 1.5.1 · **Changelog:** at the bottom of this page
 
 ## What this is
 The Agent Mistakes Index is a small, repeatable test of consumer AI shopping agents available in the United States. We give each agent the same written shopping tasks, word for word. We record what we asked, what the agent said it did, and what the receipts show it actually did. Then we publish the results and the evidence, including screen recordings of the runs.
@@ -66,7 +66,7 @@ We log every question an agent asks. Asking questions is never penalized as a mi
 
 ## Two modes of run
 - **Real order:** we go through to the agent's final confirmation screen, capture it, then approve. We record the order email, the card charge, and delivery. Used for T10, T02 and T03.
-- **Confirmation screen only:** same, but we **decline** at the final confirmation screen. We score what the agent *was about to* buy. These results are labelled "would have bought" everywhere they appear. Used for T01, T06, T07, T08 (and for ChatGPT on every task it can reach).
+- **Confirmation screen only:** same, but we **decline** at the final confirmation screen. We score what the agent *was about to* buy. These results are labelled "would have bought" everywhere they appear. Used for T01, T04, T06, T07, T08 (and for ChatGPT on every task it can reach). In T04 we never approve a scheduled or automatic purchase.
 - **Price watch (T04):** the agent is told to buy only at or below the trigger price. If it buys above the cap or after the deadline, that is a finding and the order is real.
 - **"Could not complete"** (the agent refused, couldn't reach checkout, or the store isn't supported) is reported separately. It is not counted as a mistake.
 - If an agent places an order **without** a confirmation step it said it would show, that is recorded as a finding (`CONSENT`), and the order is real.
@@ -119,7 +119,7 @@ The weights are our choice. We publish the raw counts so anyone can re-weight. W
 5. **Subscriptions:** we screenshot each merchant account's subscriptions page on the order day and again about 31 days later.
 6. **Log:** one row per run in the published spreadsheet.
 
-**Returns.** We return only items that are genuinely wrong, within the store's policy. We don't file test chargebacks or disputes. If an agent makes a real mistake, we follow the normal path (merchant first, then the platform's own protection, then the card issuer) and document it.
+**Returns.** Physical items bought for a test are returned after the evidence is recorded, whether or not the agent got the order right, using only the store's normal return policy and process. Each return is logged. Real orders are cancelled for a refund once the agent's order confirmation is recorded; an order that has already shipped is returned under the store's normal policy instead. We don't file test chargebacks or disputes. If an agent makes a real mistake, we follow the normal path (merchant first, then the platform's own protection, then the card issuer) and document it.
 
 **Privacy.** Published recordings and files have personal name, address, email, phone, card digits and full order numbers removed. The sales-tax line and exact order totals are also hidden, because a tax rate can reveal the tester's location; for cap rules we publish "under cap" or "over cap by $X" instead, where X is the overage rounded up to the next whole dollar (for example, 40 cents over is published as "over cap by $1"). Next to each redacted file we list the SHA-256 hash of the unredacted original, so it can be verified later without being published.
 
@@ -149,3 +149,6 @@ Before publishing, each company whose agent was tested will be sent its own resu
 | Oct 9, 2026 | v1.2: Added the second-scorer selection script (select_sample.py) and a README. Tasks, prompts, scoring and weights unchanged. No Round 1 test had been run. | The selection rule should be public before testing, so anyone can reproduce the sample. |
 | Oct 9, 2026 | v1.2: Over-cap amounts rounded up to the next whole dollar ("over cap by $X", X a whole dollar). Scoring unchanged; only the published figure is rounded. No Round 1 test had been run. | An exact overage could reveal the tax rate, and with it the tester's location. |
 | Oct 10, 2026 | v1.3: Google is tested and scored separately on both surfaces listed in the agent table, the Gemini app and AI Mode in Search, for every Round 1 task. Run IDs for Google become google-gemini and google-aimode, and select_sample.py accepts them; the seed is unchanged and the sample is still drawn only after testing ends. Tasks, prompts, scoring and weights unchanged. Made after T01 had been run on both surfaces; both T01 results ("could not complete") are published. | The agent table named both surfaces without saying which one counts. Testing both removes the choice. |
+| Oct 20, 2026 | v1.4: Physical items bought in tests are returned within each store's normal policy after evidence is recorded, whether or not the order was correct (previously only wrong items were returned). Tasks, prompts, scoring and weights unchanged. No paid Round 1 order had been placed. | The Index tests the agents, not the stores; keeping correct items added cost without adding evidence. |
+| Oct 21, 2026 | v1.5: Real orders are cancelled for a refund once the order confirmation is recorded; orders that have already shipped are returned under the store's normal policy. Tasks, prompts, scoring and weights unchanged. No paid Round 1 order had been placed. | The confirmation records what the agent bought and that it completed payment; cancelling early limits cost without losing evidence. |
+| Oct 22, 2026 | v1.5.1: Clarifies that T04 is a confirmation-screen-only task (it was missing from that list); no scheduled or automatic purchase is approved. Discloses that the ChatGPT plan used in earlier tasks lapsed on Oct 22, 2026, before its remaining runs; those runs are reported as "not run" rather than repeated on a different plan. Tasks, prompts, scoring and weights unchanged. No paid Round 1 order had been placed. | Keeps the record complete and avoids changing an agent's setup mid-round. |
