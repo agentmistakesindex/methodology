@@ -6,7 +6,7 @@ Private details are covered with **solid burned-in black boxes**, never blur (bl
 
 ## Always covered
 - Name, email, phone, street address, delivery map and delivery notes
-- Card digits, full order numbers, and cart/order IDs in URLs
+- Card digits (including last-4 / payment last-4, e.g. "Visa ending 3533", "ending in XXXX", "•••• XXXX"), full order numbers, and cart/order IDs in URLs
 - Browser bookmarks bar, other tabs, chat sidebars/history and profile pictures
 - The sales-tax line and the exact order total (a tax rate can reveal the tester's state)
 
@@ -26,3 +26,6 @@ Sidebar closed, bookmarks bar hidden, only the test tab open, notifications off,
 - **Oct 23, 2026:** Left-sidebar chat titles and the account name or account badge are covered.
 - **Oct 24, 2026:** The taskbar clock, date and system tray, and any screenshot-tool overlays or frames, are covered.
 - **Oct 25, 2026:** In run notes, store chain names are written as "a local supermarket" (distances dropped). In screenshots and recordings, store logos and mile figures are covered, in the same pass as address and location details.
+
+## Addition (Oct 26, 2026)
+Card last-4 digits and payment last-4 (e.g. "Visa ending 3533", "ending in XXXX") count as card digits and are always covered with solid black boxes.
